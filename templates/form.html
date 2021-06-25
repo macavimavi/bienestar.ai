@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+  <h1>{% block title %}Formulario para usuarios{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h4>Formulario para usuarios</h4>
+<form method="post" action="{{ url_for('predict') }}" class="was-validated" >
+  <div class="form-group">
+    <p><strong>Toda la información que compartas con la aplicación no será compartida con terceros y sólo será utilizada para los propósitos del uso del servicio</strong></p>
+  </div>  
+    <div class="form-group">
+      <label for="tipoPoblacion" class="form-label">¿Necesitas un profesional de la salud que atienda?</label>
+      <select id="tipoPoblacion" class="form-select" required> 
+        <option value="">Selecciona una opción</option>
+        <option value="0">Adulto</option>
+        <option value="1">Niño</option>
+        <option value="1">Parejas</option>
+      </select>
+      <div class="invalid-feedback">Campo obligatorio</div>
+    </div>   
+    <div class="form-group">
+        <label for="tipoEnfoque" class="form-label">¿Hay algun enfoque terapéutica con el que te sientas cómodo/cómoda?</label>
+        <select id="tipoEnfoque" class="form-select" aria-label="" required>
+          <option value="">Selecciona una opción</option>
+          <option value="0">Si</option>
+          <option value="1">No</option>
+        </select>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div> 
+      <div class="form-group">
+        <label for="perefencia" class="form-label">Prefieres a un terapeuta que se identifique como:</label>
+        <select id="perefencia" class="form-select" aria-label="preferencias" required>
+          <option value="">Selecciona una opción</option>
+          <option value="0">Hombre</option>
+          <option value="1">Mujer</option>
+          <option value="2">No se identifique con ninguno</option>
+          <option value="3">Te es indiferente</option>
+        </select>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div>
+      <div class="form-group">
+        <label for="modalidad" class="form-label">Buscas terapia en modalidad:</label>
+        <select id="modalidad" class="form-select" aria-label="modalidad" required>
+          <option value="">Selecciona una opción</option>
+          <option value="0">Presencial</option>
+          <option value="1">Virtual</option>
+          <option value="2">Cualquiera de los dos</option>
+        </select>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div> 
+      <div class="form-group">
+        <label for="gradoEstudios" class="form-label">¿Qué grado de estudios prefieres que tenga el terapeuta?</label>
+        <select id="gradoEstudios" class="form-select" aria-label="grado de estudio" required>
+          <option value="">Selecciona una opción</option>
+          <option value="0">Universidad</option>
+          <option value="1">Especialidad</option>
+          <option value="2">Maestría</option>
+          <option value="3">Te es indiferente</option>
+        </select>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div>
+      <div class="form-group">
+        <label for="genero" class="form-label">¿Buscas terapeuta con perspectiva de género?</label>
+        <select id="genero" class="form-select" aria-label="" required>
+          <option value="">Selecciona una opción</option>
+          <option value="0">Si</option>
+          <option value="1">No</option>
+        </select>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div>      
+      <div class="form-group">
+        <label for="costoSesion" class="form-label">¿Cuánto deseas pagar por sesión?</label>
+        <select id="costoSesion" class="form-select" aria-label="" required>
+          <option value="">Selecciona una opción</option>
+          <option value="0">350 a 500</option>
+          <option value="1">500 a 650</option>
+          <option value="2">650 a 1000</option>
+          <option value="3">más de 1000</option>
+          <option value="4">No importa</option>
+        </select>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div>
+      <div class="form-group">
+        <label for="personalidad" class="form-label">¿Cómo describirías la personalidad ideal del terapeuta que buscas?</label>
+        <input type="text" class="form-control" id="personalidad" placeholder="Personalidad" required>
+        <div class="invalid-feedback">Campo obligatorio</div>
+      </div>
+      <div class="form-group ">
+            <button type="submit" class="btn btn-primary">Consultar</button>
+      </div>
+  </form>
+  {{prediction_text}}
+
+{% endblock %}
